@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Img</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .grallery {
+        width: 80%;
+        height: auto;
+        background-color: #4685d2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-x: scroll;
+    }
+
+    .grallery::-webkit-scrollbar {
+        display: none;
+    }
+
+    .grallery div {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        padding: 20px;
+        column-gap: 18px;
+    }
+
+    .grallery div img {
+        width: 420px;
+        height: 280px;
+        overflow: hidden;
+        filter: grayscale(100%);
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .grallery div img:hover {
+        filter: grayscale(0);
+        scale: 1.1;
+        transition: all .7s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    }
+
+    button {
+        position: absolute;
+        width: 26px;
+        height: 50px;
+        font-size: 32px;
+        top: 50%;
+        border: none;
+        border-radius: 2px;
+        background: hsla(240, 64%, 51%, 0.355);
+        cursor: pointer;
+
+    }
+
+    .pre {
+        left: 130px;
+    }
+
+    .next {
+        right: 130px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <button class="pre">&#10094</button>
+        <div class="grallery">
+
+            <div>
+                <img src="sh4.jpg" alt="Img">
+                <img src="sh5.jpg" alt="Img">
+                <img src="sh6.jpg" alt="Img">
+            </div>
+            <div>
+                <img src="sh1.webp" alt="Img">
+                <img src="sh2.jpg" alt="Img">
+                <img src="sh3.jpg" alt="Img">
+            </div>
+            <div>
+                <img src="sh4.jpg" alt="Img">
+                <img src="sh5.jpg" alt="Img">
+                <img src="sh6.jpg" alt="Img">
+            </div>
+        </div>
+        <button class="next">&#10095</button>
+    </div>
+</body>
+<script src="scroll.js"></script>
+
+</html>

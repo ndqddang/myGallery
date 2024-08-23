@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=ư, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .slider {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .slides {
+        width: 600px;
+        height: 600px;
+        position: relative;
+        border-radius: 5px;
+    }
+
+    .slides img {
+        width: 560px;
+        height: 360px;
+        border-radius: 5px;
+        display: none;
+        box-shadow: 10px 10px 0.6 #3d3def;
+    }
+
+    .slides img.displayImg {
+        display: block;
+        transition: .4s ease-in-out;
+        animation: moving .5s;
+    }
+
+    @keyframes moving {
+        from {
+            opacity: 0.5;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    button {
+        position: absolute;
+        width: 26px;
+        height: 50px;
+        font-size: 32px;
+        top: 50%;
+        transform: translateY(-120px);
+        border: none;
+        border-radius: 2px;
+        background: hsla(240, 64%, 51%, 0.355);
+        cursor: pointer;
+
+    }
+
+    .pre {
+        left: 10px;
+    }
+
+    .next {
+        right: 50px;
+    }
+
+    #cc:hover {
+        filter: grayscale(0);
+        scale: 1.1;
+        transition: all .7s ease-in;
+        cursor: crosshair;
+    }
+
+    #cc {
+        filter: grayscale(1009877%);
+        width: 450px;
+
+    }
+</style>
+
+<body>
+    <div class="slider">
+        <div class="slides">
+            <img src="sh1.webp" alt="">
+            <img src="sh2.jpg" alt="">
+            <img src="sh3.jpg" alt="">
+            <img src="sh4.jpg" alt="">
+            <img src="sh5.jpg" alt="">
+            <img src="sh6.jpg" alt="">
+            <button class="pre">&#10094</button>
+            <button class="next">&#10095</button>
+        </div>
+    </div>
+    <img src="sh4.jpg" alt="" id="cc">
+</body>
+<script src="todoapp.js">
+
+</script>
+
+</html>

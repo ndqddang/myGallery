@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    ul li {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: brown;
+        list-style: none;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+
+
+
+    .active {
+        background-color: darkcyan;
+    }
+
+    #images {
+        width: 400px;
+        height: 320px;
+    }
+
+    #images.add {
+        animation: moving 0.4s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    }
+
+    @keyframes moving {
+        from {
+            opacity: 0.4;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <child>
+            <img src="" alt="" id="images">
+            <ul class="parentButtons">
+                <li class="a active" onclick="other(1,this)" id="1"></li>
+                <li class="a" onclick="other(2,this)" id="2"></li>
+                <li class="a" onclick="other(3,this)" id="3"></li>
+            </ul>
+        </child>
+    </div>
+</body>
+<script>
+    let myArr = ["sh2.jpg", "sh3.jpg", "sh4.jpg"];
+    let indexImg = 0;
+    let images = document.querySelector("#images");
+    let classa = document.querySelectorAll(".a");
+    function other(para, oknha) {
+        classa.forEach(a => {
+            a.style.background = "brown"
+        })
+        oknha.style.background = "darkcyan";
+        images.classList.add("add");
+        switch (para) {
+            case 1:
+                images.src = myArr[0];
+                break
+            case 2:
+                images.src = myArr[1];
+                break
+            case 3:
+                images.src = myArr[2];
+                break
+        }
+
+        setTimeout(() => {
+            images.classList.remove("add");
+        }, 200);
+
+    }
+    document.addEventListener("DOMContentLoaded", firstImg)
+    function firstImg() {
+        if (myArr.length > 0) {
+            images.src = myArr[0];
+        }
+    }
+
+
+</script>
+
+</html>

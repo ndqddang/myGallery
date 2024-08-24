@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Practice Again </title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .parent {
+        width: 100%;
+        height: 100vh;
+        background-color: #59f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .gallery {
+        width: 680px;
+        height: 620px;
+
+
+    }
+
+    .gallery img {
+        width: 100%;
+        height: 560px;
+        display: none;
+    }
+
+    .gallery img.add {
+        display: block;
+        transition: all .4s ease-in;
+        animation: moving .4s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    }
+
+    @keyframes moving {
+        from {
+            opacity: 0.4;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    button {
+        position: absolute;
+        width: 26px;
+        height: 50px;
+        font-size: 32px;
+        top: 50%;
+        border: none;
+        border-radius: 2px;
+        background: hsla(240, 64%, 51%, 0.355);
+        cursor: pointer;
+        transform: translateY(-100px);
+    }
+
+    .pre {
+        left: 320px;
+    }
+
+    .next {
+        right: 320px;
+    }
+</style>
+
+<body>
+    <div class="parent">
+        <button class="pre" onclick="pre()">&#10094</button>
+        <div class="gallery">
+            <img src="sh2.jpg" alt="">
+            <img src="sh3.jpg" alt="">
+            <img src="sh4.jpg" alt="">
+            <img src="sh5.jpg" alt="">
+            <img src="sh6.jpg" alt="">
+
+        </div>
+        <button class="next" onclick="next()">&#10095</button>
+
+    </div>
+</body>
+<script>
+    const gallery = document.querySelectorAll(".gallery img");
+    var indexImage = 0;
+    document.addEventListener("DOMContentLoaded", showFirstImg)
+    function showFirstImg() {
+        if (gallery.length > indexImage) {
+            gallery[indexImage].classList.add("add")
+        }
+    }
+
+    function conditionToShow(index) {
+        if (index >= gallery.length - 1) {
+            indexImage = 0;
+        }
+        if (index < 0) {
+            indexImage = gallery.length - 1;
+        }
+        gallery.forEach(image => {
+            image.classList.remove("add");
+        })
+        gallery[indexImage].classList.add("add");
+    }
+    function pre() {
+        indexImage--;
+        conditionToShow(indexImage);
+    }
+    function next() {
+        indexImage++;
+        conditionToShow(indexImage);
+    }
+</script>
+
+</html>

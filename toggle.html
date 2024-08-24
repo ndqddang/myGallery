@@ -49,10 +49,9 @@
 
     }
 
-    input:checked label {
-        background-color: rgb(63, 30, 95);
+    input:checked+label {
+        background-color: rgb(67, 42, 93);
         transition: all .5s ease-in-out;
-        transition: all .3s ease-in-out;
     }
 
     input:checked+label::before {
@@ -73,30 +72,13 @@
         transition: all .4s ease-in-out;
     }
 
-
-
-    /* .cha {
-        width: 100%;
-        z-index: -2;
-        height: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .pa>.backgroud>div>p {
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 20px;
     }
-
-    button {
-        margin: 20px 0;
-        cursor: pointer;
-    }
-
-    button:active>.pa {
-        background-color: darkblue;
-
-    } */
 </style>
 
 <body>
-    <div class="cha"><button>My btn</button></div>
     <input type="checkbox" id="check">
     <label for="check"></label>
     <div class="pa">

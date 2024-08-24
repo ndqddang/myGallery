@@ -10,9 +10,9 @@ grallery.addEventListener("wheel", function (e) {
 
 pre.addEventListener("click", () => {
     grallery.style.scrollBehavior = "smooth";
-    grallery.scrollLeft -= 1600;
+    grallery.scrollLeft = 1600;
 })
 next.addEventListener("click", () => {
     grallery.style.scrollBehavior = "smooth";
-    grallery.scrollLeft += 1200;
+    grallery.scrollLeft = 600;
 })

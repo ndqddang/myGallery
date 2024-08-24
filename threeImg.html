@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Img</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .parent {
+        width: 100%;
+        height: 100vh;
+        background-color: #59f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .gallery {
+        width: 680px;
+        height: 620px;
+
+
+    }
+
+    .gallery img {
+        width: 100%;
+        height: 560px;
+        /* display: none; */
+    }
+
+    .gallery img.add {
+        display: block;
+        transition: all .4s ease-in;
+        animation: moving .4s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    }
+
+    @keyframes moving {
+        from {
+            opacity: 0.4;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    button {
+        position: absolute;
+        width: 26px;
+        height: 50px;
+        font-size: 32px;
+        top: 50%;
+        border: none;
+        border-radius: 2px;
+        background: hsla(240, 64%, 51%, 0.355);
+        cursor: pointer;
+        transform: translateY(-100px);
+    }
+
+    .pre {
+        left: 320px;
+    }
+
+    .next {
+        right: 320px;
+    }
+</style>
+
+<body>
+    <div class="parent">
+        <button class="pre" onclick="pre()">&#10094</button>
+        <div class="gallery">
+            <img src="" alt="" id="myImg">
+        </div>
+        <button class="next" onclick="next()">&#10095</button>
+
+    </div>
+</body>
+<script>
+    let arrayImg = ["sh2.jpg", "sh3.jpg", "sh4.jpg", "sh5.jpg", "sh6.jpg"];
+    document.addEventListener("DOMContentLoaded", showFirstImg)
+    function showFirstImg() {
+        myImg.src = arrayImg[0]
+    }
+    var myImg = document.getElementById("myImg");
+    let indexArr = 0;
+    function pre() {
+        indexArr--;
+        if (indexArr < 0) {
+            indexArr = arrayImg.length - 1;
+        }
+        myImg.src = arrayImg[indexArr];
+    }
+    function next() {
+        indexArr++;
+        if (indexArr >= arrayImg.length) {
+            indexArr = 0
+        }
+        myImg.src = arrayImg[indexArr];
+    }
+</script>
+
+</html>

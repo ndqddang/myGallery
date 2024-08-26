@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .cc {
+        width: 100%;
+        height: 100vh;
+        background-color: blueviolet;
+        text-align: center;
+        font-size: 34px;
+    }
+
+    .cc:nth-child(2) {
+        background-color: rgb(25, 188, 96);
+    }
+
+    .cc:nth-child(3) {
+        background-color: rgb(230, 41, 142);
+    }
+
+    .cc:nth-child(4) {
+        background-color: rgb(124, 71, 5);
+    }
+
+
+    .myIcon {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        border-radius: 50%;
+        width: 60px;
+        text-align: center;
+        height: 60px;
+        font-size: 26px;
+        font-weight: 100;
+        cursor: pointer;
+        background-color: dodgerblue;
+        opacity: 0;
+        pointer-events: none;
+
+    }
+
+    .myIcon.add {
+        opacity: 1;
+        pointer-events: auto;
+
+    }
+
+    @media screen and (max-width:500px) {
+
+
+        .myIcon {
+            font-size: 26px;
+            font-weight: 100;
+            background-color: rgb(215, 27, 131);
+            width: 40px;
+            color: hsla(0, 0%, 0%, 0.482);
+            height: 40px;
+        }
+
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
+<body>
+    <div class="cc">1</div>
+    <div class="cc">2</div>
+    <div class="cc">3</div>
+    <div class="cc">4</div>
+
+
+    <ion-icon class="myIcon" name="arrow-up-outline" style="font-size:40px; margin-top: 10px;"></ion-icon>
+
+
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+    const a = document.querySelector(".myIcon");
+    a.addEventListener("click", () => {
+        window.scrollTo(0, 0);
+
+    })
+
+    window.addEventListener("scroll", function () {
+        if (pageYOffset > 250) {
+            a.classList.add("add");
+        } else {
+            a.classList.remove("add")
+        }
+    })
+
+</script>
+
+</html>

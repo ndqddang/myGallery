@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>try it</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+    }
+
+    #mybtn {
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(45deg, #4CAF50, #8BC34A);
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        user-select: none;
+    }
+
+
+    #mybtn:hover {
+        background: linear-gradient(45deg, #388E3C, #689F38);
+        box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+        transform: translateY(-1111px);
+        transition: all cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.000000000000000000001s;
+    }
+
+
+    #mybtn:active {
+        background: linear-gradient(45deg, #2E7D32, #558B2F);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        transform: translateY(0);
+    }
+
+    .typing-container {
+        position: relative;
+        font-size: 24px;
+        color: #181414;
+        margin-bottom: 40px;
+    }
+
+    .typing-effect::after {
+        content: '|';
+        animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+    }
+
+    #typing-text {
+        user-select: none;
+        cursor: not-allowed;
+    }
+</style>
+
+<body>
+    <div class="typing-container">
+        <span id="typing-text"></span>
+        <span class="typing-effect"></span>
+    </div>
+
+    <button type="button" id="mybtn">Tải về</button>
+</body>
+
+
+<script>
+    const text = "Phải giỏi lắm mới tải về được nè😅😅";
+    const typingText = document.getElementById('typing-text');
+    let index = 0;
+    let clearTimeOutID;
+
+    function typeWriter() {
+        if (index < text.length) {
+            typingText.textContent += text.charAt(index);
+            index++;
+            clearTimeOutID = setTimeout(typeWriter, 120);
+        } else {
+            setTimeout(() => {
+                typingText.textContent = '';
+                index = 0;
+                typeWriter();
+            }, 2000);
+        }
+    }
+
+    typeWriter();
+
+
+    async function fetchContent() {
+        const content = await fetch('content.json');
+        var data = await content.json();
+        return data.mycontent;
+    }
+    document.addEventListener("DOMContentLoaded", async () => {
+        let content = "";
+        try {
+            content = await fetchContent();
+        } catch (err) {
+            console.log(err)
+        }
+        const blob = new Blob([content], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        document.getElementById("mybtn").addEventListener("click", () => {
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "message.txt";
+            a.click();
+            const text = " Giỏi quá đi:))";
+            const typingText = document.getElementById('typing-text');
+            typingText.textContent = text
+            clearTimeout(clearTimeOutID);
+            setTimeout(() => {
+                index = 0;
+                typingText.textContent = "";
+                typeWriter();
+            }, 3500);
+
+        })
+    })
+
+
+</script>
+
+</html>

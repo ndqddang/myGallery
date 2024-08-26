@@ -62,9 +62,9 @@
         <child>
             <img src="" alt="" id="images">
             <ul class="parentButtons">
-                <li class="a active" onclick="other(1,this)" id="1"></li>
-                <li class="a" onclick="other(2,this)" id="2"></li>
-                <li class="a" onclick="other(3,this)" id="3"></li>
+                <li class="a active count-1" onclick="other(1,this)" id="1"></li>
+                <li class="a count-2" onclick="other(2,this)" id="2"></li>
+                <li class="a count-3" onclick="other(3,this)" id="3"></li>
             </ul>
         </child>
     </div>
@@ -74,6 +74,15 @@
     let indexImg = 0;
     let images = document.querySelector("#images");
     let classa = document.querySelectorAll(".a");
+    setInterval(() => {
+        indexImg++;
+        if (indexImg >= myArr.length) {
+            indexImg = 0;
+        }
+        images.src = myArr[indexImg];
+
+    }, 2000);
+
     function other(para, oknha) {
         classa.forEach(a => {
             a.style.background = "brown"
@@ -103,8 +112,6 @@
             images.src = myArr[0];
         }
     }
-
-
 </script>
 
 </html>

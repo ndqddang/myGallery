@@ -70,6 +70,14 @@
     </div>
 </body>
 <script>
+    import hellofromVN from './jav.js';
+    var h1 = document.createElement("h1");
+    h1.innerText = hellofromVN();
+    document.body.appendChild(h1)
+
+</script>
+<script>
+
     let myArr = ["sh2.jpg", "sh3.jpg", "sh4.jpg"];
     let indexImg = 0;
     let images = document.querySelector("#images");
@@ -112,6 +120,9 @@
             images.src = myArr[0];
         }
     }
+
+
+
 </script>
 
 </html>

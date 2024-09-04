@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    #myInput {
+        display: none;
+    }
+
+    .myLabel {
+        cursor: pointer;
+        padding: 20px;
+        background-color: #22c9db;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 48px;
+        user-select: none;
+        border-radius: 10px;
+    }
+
+    .content_1 {
+        width: 600px;
+        height: fit-content;
+        background-color: #3a4ade;
+        margin-top: 20px;
+        border-radius: 6px;
+        width: min(600px, 90%);
+        display: none;
+    }
+
+    input:checked~.content_1 {
+        display: block;
+        backdrop-filter: blur(120px);
+    }
+
+    .wrapper {
+        width: 300px;
+
+        background-color: #cbcddf;
+        overflow-x: scroll;
+
+        display: flex;
+        gap: 20px;
+        scroll-snap-type: x proximity;
+    }
+
+    .scroll {
+        width: 300px;
+        flex-shrink: 0;
+        background-color: #6ad4e0;
+        scroll-snap-align: center;
+    }
+
+    .label--input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    #inputText {
+        width: 200px;
+        height: 30px;
+        padding: 20px;
+        transition: all ease-in-out 0.32s;
+    }
+
+    .label--input_space {
+        position: absolute;
+        left: 690px;
+        background-color: #fdfffd;
+        padding: 0 10px;
+        transition: all ease-in 0.52s;
+
+    }
+
+    #inputText:focus {
+        border: 2px solid #1daac3;
+
+    }
+
+    #inputText:focus+.label--input_space {
+        top: -8px;
+        transition: all ease-in 0.52s;
+    }
+
+    #inputText:not(:placeholder-shown)+.label--input_space {
+        top: -8px;
+    }
+</style>
+
+<body>
+    <input type="checkbox" id="myInput">
+    <label for="myInput" class="myLabel">Show Infomation</label>
+    <div class="content_1">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti expedita magnam voluptatem ad eius, ex
+        quibusdam mollitia sit error! Possimus commodi exercitationem nesciunt temporibus doloribus illum ipsum
+        provident culpa laboriosam.
+    </div>
+    <div class="content_1">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti expedita magnam voluptatem ad eius, ex
+        quibusdam mollitia sit error! Possimus commodi exercitationem nesciunt temporibus doloribus illum ipsum
+        provident culpa laboriosam.
+    </div>
+
+    <div class="wrapper">
+        <div class="scroll">
+            <h1>Content 1</h1>
+            <div class="content">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia ipsa iure ut eum soluta expedita
+                aspernatur sit voluptas non deleniti, corporis laudantium sunt ipsum dolor enim reiciendis quo molestias
+                doloribus.
+            </div>
+        </div>
+        <div class="scroll">
+            <h1>Content 2</h1>
+            <div class="content">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia ipsa iure ut eum soluta expedita
+                aspernatur sit voluptas non deleniti, corporis laudantium sunt ipsum dolor enim reiciendis quo molestias
+                doloribus.
+            </div>
+        </div>
+        <div class="scroll">
+            <h1>Content 3</h1>
+            <div class="content">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia ipsa iure ut eum soluta expedita
+                aspernatur sit voluptas non deleniti, corporis laudantium sunt ipsum dolor enim reiciendis quo molestias
+                doloribus.
+            </div>
+        </div>
+        <div class="scroll">
+            <h1>Content 4</h1>
+            <div class="content">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia ipsa iure ut eum soluta expedita
+                aspernatur sit voluptas non deleniti, corporis laudantium sunt ipsum dolor enim reiciendis quo molestias
+                doloribus.
+            </div>
+        </div>
+    </div>
+
+
+    <div class="label--input">
+        <input type="text" id="inputText" placeholder="">
+        <label for="inputText" class="label--input_space">E-mail</label>
+    </div>
+
+</body>
+
+</html>

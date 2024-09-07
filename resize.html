@@ -4,158 +4,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Display Flex</title>
+    <link rel="stylesheet" href="testSass.css">
 </head>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
     * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
+        font-family: "Montserrat", system-ui;
+        font-optical-sizing: auto;
+        font-size: normal;
+        font-style: oblique;
     }
 
-    #myInput {
-        display: none;
-    }
-
-    .myLabel {
-        cursor: pointer;
-        padding: 20px;
-        background-color: #22c9db;
+    body {
+        height: 80vh;
         display: flex;
-        justify-content: center;
         align-items: center;
-        width: 200px;
-        height: 48px;
-        user-select: none;
-        border-radius: 10px;
+        justify-content: center;
     }
 
-    .content_1 {
+    .container {
         width: 600px;
-        height: fit-content;
-        background-color: #3a4ade;
-        margin-top: 20px;
-        border-radius: 6px;
         width: min(600px, 90%);
-        display: none;
+        height: 320px;
+        background-color: #50c479;
     }
 
-    input:checked~.content_1 {
-        display: block;
-        backdrop-filter: blur(120px);
-    }
-
-    .wrapper {
-        width: 300px;
-
-        background-color: #cbcddf;
-        overflow-x: scroll;
-
+    .tabs__items {
         display: flex;
-        gap: 20px;
-        scroll-snap-type: x proximity;
-    }
-
-    .scroll {
-        width: 300px;
-        flex-shrink: 0;
-        background-color: #6ad4e0;
-        scroll-snap-align: center;
-    }
-
-    .label--input {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        justify-content: space-around;
+        cursor: pointer;
         position: relative;
     }
 
-    #inputText {
-        width: 200px;
-        height: 30px;
-        padding: 20px;
-        transition: all ease-in-out 0.32s;
-    }
-
-    .label--input_space {
+    .line {
         position: absolute;
-        left: 690px;
-        background-color: #fdfffd;
-        padding: 0 10px;
-        transition: all ease-in 0.52s;
+        left: 0;
 
+        bottom: 0;
+
+        height: 5px;
+        background-color: #30ade8;
+        transition: all ease-in-out .343193919s;
     }
 
-    #inputText:focus {
-        border: 2px solid #1daac3;
-
+    .item span {
+        font-size: 26px;
     }
 
-    #inputText:focus+.label--input_space {
-        top: -8px;
-        transition: all ease-in 0.52s;
+    .item>.myIcon {
+        font-size: 24px;
     }
 
-    #inputText:not(:placeholder-shown)+.label--input_space {
-        top: -8px;
+    .tabs__contents>.content {
+        display: none;
+    }
+
+    .tabs__contents>.content.active {
+        display: block;
+    }
+
+    .item:hover {
+        background-color: hsla(195, 50%, 53%, 0.432352);
+        transition: all ease-in-out .32s;
+    }
+
+    .item.active {
+        background-color: hsla(195, 50%, 53%, 0.432352);
     }
 </style>
 
 <body>
-    <input type="checkbox" id="myInput">
-    <label for="myInput" class="myLabel">Show Infomation</label>
-    <div class="content_1">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti expedita magnam voluptatem ad eius, ex
-        quibusdam mollitia sit error! Possimus commodi exercitationem nesciunt temporibus doloribus illum ipsum
-        provident culpa laboriosam.
-    </div>
-    <div class="content_1">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti expedita magnam voluptatem ad eius, ex
-        quibusdam mollitia sit error! Possimus commodi exercitationem nesciunt temporibus doloribus illum ipsum
-        provident culpa laboriosam.
-    </div>
+    <div class="container">
+        <div class="tabs__items">
+            <div class="item active">
+                <ion-icon name="logo-amazon" class="myIcon"></ion-icon>
+                <span>Amazon</span>
+            </div>
+            <div class="item">
+                <ion-icon name="logo-facebook" class="myIcon">
+                </ion-icon> <span>Facebook</span>
+            </div>
+            <div class="item">
+                <ion-icon name="logo-wechat" class="myIcon"></ion-icon>
+                <span>WeChat</span>
+            </div>
+            <div class="item">
+                <ion-icon name="logo-tux" class="myIcon">
+                </ion-icon> <span>Tux app</span>
+            </div>
+            <div class="line"></div>
+        </div>
 
-    <div class="wrapper">
-        <div class="scroll">
-            <h1>Content 1</h1>
-            <div class="content">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia ipsa iure ut eum soluta expedita
-                aspernatur sit voluptas non deleniti, corporis laudantium sunt ipsum dolor enim reiciendis quo molestias
-                doloribus.
-            </div>
-        </div>
-        <div class="scroll">
-            <h1>Content 2</h1>
-            <div class="content">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia ipsa iure ut eum soluta expedita
-                aspernatur sit voluptas non deleniti, corporis laudantium sunt ipsum dolor enim reiciendis quo molestias
-                doloribus.
-            </div>
-        </div>
-        <div class="scroll">
-            <h1>Content 3</h1>
-            <div class="content">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia ipsa iure ut eum soluta expedita
-                aspernatur sit voluptas non deleniti, corporis laudantium sunt ipsum dolor enim reiciendis quo molestias
-                doloribus.
-            </div>
-        </div>
-        <div class="scroll">
-            <h1>Content 4</h1>
-            <div class="content">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia ipsa iure ut eum soluta expedita
-                aspernatur sit voluptas non deleniti, corporis laudantium sunt ipsum dolor enim reiciendis quo molestias
-                doloribus.
-            </div>
+        <div class="tabs__contents">
+            <div class="content active">Amazon Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere
+                cupiditate at
+                facilis vero sint, ullam illum maiores quisquam iste quasi alias est assumenda ipsum nesciunt fugit
+                minima. Labore, ullam beatae!</div>
+            <div class="content">Facebook Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam adipisci
+                magnam tempore vel ut possimus et facere nihil repellat quod, recusandae commodi quis beatae expedita
+                quibusdam repudiandae minima culpa ex!</div>
+            <div class="content">WeChat Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia ipsum
+                necessitatibus officiis a atque, aspernatur perferendis repellendus nulla tempore nobis maxime ipsam
+                cumque! Laudantium nam at quos deleniti excepturi.</div>
+            <div class="content">Tux app Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores saepe quaerat
+                eveniet accusantium laborum error quos, aspernatur perspiciatis! Voluptatum ad reprehenderit provident
+                nulla magni corrupti vel, eveniet quaerat nesciunt nobis!</div>
         </div>
     </div>
-
-
-    <div class="label--input">
-        <input type="text" id="inputText" placeholder="">
-        <label for="inputText" class="label--input_space">E-mail</label>
-    </div>
-
 </body>
+<script>
+    const $$ = document.querySelectorAll.bind(document);
+    const $$$$$$$$$$$ = document.querySelector.bind(document);
+    let items = $$(".item");
+    let contents = $$(".content");
+    let line = $$$$$$$$$$$(".line");
+    let myLineItem = $$$$$$$$$$$(".item.active")
+    console.log(myLineItem)
+    line.style.left = myLineItem.offsetLeft + "px"
+    line.style.width = myLineItem.offsetWidth + "px"
+    items.forEach((item, index) => {
+        item.addEventListener("click", function () {
+            $$$$$$$$$$$(".item.active").classList.remove("active");
+            this.classList.add("active");
+            line.style.left = item.offsetLeft + "px";
+            line.style.width = item.offsetWidth + "px";
+            $$$$$$$$$$$(".content.active").classList.remove("active");
+            contents[index].classList.add("active");
+        });
+    });
+
+
+
+    // set backgoundColor
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const body = document.querySelector("body");
+
+        const changeBackgroundColor = () => {
+            let daynow = new Date();
+            let minute = daynow.getMinutes();
+            if (minute % 2 === 0) {
+                body.style.backgroundColor = "red";
+            } else {
+                body.style.backgroundColor = "green";
+            }
+        };
+
+        // Gọi hàm ngay lập tức khi tải trang
+        changeBackgroundColor();
+
+        // Tính thời gian còn lại đến khi phút tiếp theo bắt đầu
+        let now = new Date();
+        console.log(now.getSeconds())
+        let msUntilNextMinute = (60 - now.getSeconds()) * 1000;
+        console.log(msUntilNextMinute)
+
+        // Thiết lập setTimeout để gọi hàm vào đúng khi phút mới bắt đầu
+        setTimeout(() => {
+            // Gọi hàm đổi màu ngay khi phút mới bắt đầu
+            changeBackgroundColor();
+
+            // Sau đó sử dụng setInterval để kiểm tra mỗi phút
+            setInterval(changeBackgroundColor, 60000);
+        }, msUntilNextMinute);
+    });
+
+
+</script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </html>
